@@ -19,10 +19,14 @@ $linhasTabela = '';
 foreach ($listaTarefasJSON as $tarefa) {
     $idCount = 2;
     $tr = '';
-    $tr = str_replace('#STATUS', $tarefa->getStatus(), $modeloTarefa);
+    $tr = str_replace('#STATUS', $tarefa->legenda(), $modeloTarefa);
     $tr = str_replace('#ID', $tarefa->getId(), $tr, $idCount);
     $tr = str_replace('#NOME', $tarefa->getNome(), $tr);
     $tr = str_replace('#DATALIMITE', $tarefa->getDataLimite(), $tr);
+    if (!$tarefa->getStatus())
+    {
+        $tr = str_replace('#CHECK', 'checked', $tr);
+    }
     $linhasTabela .= $tr;
 }
 

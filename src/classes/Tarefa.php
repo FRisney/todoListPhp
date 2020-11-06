@@ -66,4 +66,16 @@ class Tarefa
        $this->dataLimite = $dataLimite;
     }
 
+    public function legenda()
+    {
+        if ($this->status)
+        {
+            return 'Em Aberto';
+        }
+        else
+        {
+            return 'Encerrado';
+        }
+    }
+
 }

@@ -23,6 +23,6 @@ foreach ($listaTarefasJSON as $t) {
 }
 
 $pagina = str_replace('#NOME', $tarefa->getNome(), $template);
-$pagina = str_replace('#STATUS', $tarefa->getStatus(), $pagina);
+$pagina = str_replace('#STATUS', $tarefa->legenda(), $pagina);
 $pagina = str_replace('#DATALIMITE', $tarefa->getDataLimite(), $pagina);
 echo str_replace('#DESCRICAO', $tarefa->getDescricao(), $pagina);
