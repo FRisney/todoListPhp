@@ -13,15 +13,16 @@ class ArquivoTarefa
     {
         $dataTarefas = [];
         $cont = 1;
-        foreach ($tarefas as $key => $tarefa) {
+        foreach ($tarefas as $tarefa) {
             $arr['id'] = $cont++;
             $arr['nome'] = $tarefa->getNome();
             $arr['descricao'] = $tarefa->getDescricao();
             $arr['dataLimite'] = $tarefa->getDataLimite();
             $arr['status'] = $tarefa->getStatus();
+            $arr['imgUrl'] = $tarefa->getImgUrl();
             $dataTarefas[] = $arr;
-        }        
-        $jsonTarefas = json_encode($dataTarefas); 
+        }
+        $jsonTarefas = json_encode($dataTarefas);
         file_put_contents($this->caminho, $jsonTarefas);
     }
 
@@ -30,11 +31,11 @@ class ArquivoTarefa
         $jsonTarefas = json_decode(file_get_contents($this->caminho));
         $dataTarefas = [];
         foreach ($jsonTarefas as $key => $obj) {
-            $t = new Tarefa($obj->status, $obj->nome, $obj->descricao, $obj->dataLimite);
+            $t = new Tarefa($obj->status, $obj->nome, $obj->descricao, $obj->dataLimite, $obj->imgUrl);
             $t->setId($obj->id);
             $dataTarefas[] = $t;
         }
-        
+
         return $dataTarefas;
     }
 }
