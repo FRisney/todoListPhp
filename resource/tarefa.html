@@ -6,6 +6,9 @@
     <td> #DATALIMITE </td>
     <td>
         <button onclick="document.location.href='/detalhes.php?id=#ID'" class="btn btn-info">Visualizar</button>
-        <input type="checkbox" #CHECK>
+        <form action="atualizarTarefa.php" method="POST" id="form-#ID">
+            <input type="hidden" name="id" value="#ID">
+            <input type="checkbox" name="status" onclick="document.querySelector('#form-#ID').submit()" #CHECK>
+        </form>
     </td>
 </tr>
